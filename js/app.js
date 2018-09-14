@@ -43,6 +43,7 @@ const allCards = document.querySelector('.deck');
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
   if (cardClicked.classList.contains('card')){
-    console.log ('clicked');
+    cardClicked.classList.toggle('open');
+    cardClicked.classList.toggle('show');
   }
 });
