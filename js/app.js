@@ -45,5 +45,8 @@ allCards.addEventListener('click', function(event){
   if (cardClicked.classList.contains('card')){
     cardClicked.classList.toggle('open');
     cardClicked.classList.toggle('show');
+    const sign = console.log (cardClicked.querySelector('i'));
+    var open = [sign];
+    console.log (open);
   }
 });
