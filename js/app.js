@@ -2,7 +2,6 @@
  * 创建一个包含所有卡片的数组
  */
 
-
 /*
  * 显示页面上的卡片
  *   - 使用下面提供的 "shuffle" 方法对数组中的卡片进行洗牌
@@ -36,3 +35,14 @@ function shuffle(array) {
  *    + 增加移动计数器并将其显示在页面上（将这个功能放在你从这个函数中调用的另一个函数中）
  *    + 如果所有卡都匹配，则显示带有最终分数的消息（将这个功能放在你从这个函数中调用的另一个函数中）
  */
+
+
+/*为什么这里不能用 getElementsByClassName('.deck')?*/
+const allCards = document.querySelector('.deck');
+
+allCards.addEventListener('click', function(event){
+  const cardClicked = event.target;
+  if (cardClicked.classList.contains('card')){
+    console.log ('clicked');
+  }
+});
