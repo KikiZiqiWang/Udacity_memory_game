@@ -40,13 +40,21 @@ function shuffle(array) {
 /*为什么这里不能用 getElementsByClassName('.deck')?*/
 const allCards = document.querySelector('.deck');
 
+var open = [];
+
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
-  if (cardClicked.classList.contains('card')){
-    cardClicked.classList.toggle('open');
-    cardClicked.classList.toggle('show');
-    const sign = console.log (cardClicked.querySelector('i'));
-    var open = [sign];
-    console.log (open);
-  }
+  if ((open.length < 2) && (cardClicked.classList.contains('card')))
+  {
+      cardClicked.classList.toggle('open');
+      cardClicked.classList.toggle('show');
+      const sign = console.log (cardClicked.querySelector('i'));
+      open.push(sign);
+    }
+  else if (open.length === 2) {
+    if (!(open[1]===open[2])){
+      cardClicked.classList.toggle('open');
+      cardClicked.classList.toggle('show');
+      }
+    }
 });
