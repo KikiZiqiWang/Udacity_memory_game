@@ -39,7 +39,7 @@ function shuffle(array) {
 
 /*为什么这里不能用 getElementsByClassName('.deck')?*/
 const allCards = document.querySelector('.deck');
-let cardsOpne = [];
+let cardsOpen = [];
 
 function flipcard(a) {
   a.classList.toggle('open');
@@ -50,11 +50,23 @@ function addcardsOpen(a){
   cardsOpen.push(a);
 }
 
+function compare(){
+  if (cardsOpen[0].firstElementChild.className ===
+      cardsOpen[1].firstElementChild.className ){
+        console.log ("matched!");
+      }else {
+        console.log ("fail");
+      }
+}
+
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
-  if ((cardClicked.classList.contains('card')))
+  if ((cardClicked.classList.contains('card')) && (cardsOpen.length < 2))
   {
       flipcard (cardClicked);
       addcardsOpen (cardClicked);
+    }
+    if (cardsOpen.length === 2){
+      compare();
     }
 });
