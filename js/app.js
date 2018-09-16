@@ -39,22 +39,23 @@ function shuffle(array) {
 
 /*为什么这里不能用 getElementsByClassName('.deck')?*/
 const allCards = document.querySelector('.deck');
+let cardsOpen = [];
 
-var open = [];
+function flipcard(a) {
+  a.classList.toggle('open');
+  a.classList.toggle('show');
+}
+
+function addCardsOpen(a){
+  cardsOpen.push(a);
+  console.log(cardsOpen);
+}
 
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
-  if ((open.length < 2) && (cardClicked.classList.contains('card')))
+  if ((cardClicked.classList.contains('card')))
   {
-      cardClicked.classList.toggle('open');
-      cardClicked.classList.toggle('show');
-      const sign = console.log (cardClicked.querySelector('i'));
-      open.push(sign);
-    }
-  else if (open.length === 2) {
-    if (!(open[1]===open[2])){
-      cardClicked.classList.toggle('open');
-      cardClicked.classList.toggle('show');
-      }
+      flipcard (cardClicked);
+      addCardsOpen (cardClicked);
     }
 });
