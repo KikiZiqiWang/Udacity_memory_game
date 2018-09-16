@@ -57,19 +57,23 @@ function compare(){
         cardsOpen[1].classList.toggle('match');
         cardsOpen = [];
       }else {
-        console.log ("fail");
-        cardsOpen = [];
+        setTimeout(function(){
+          flipcard(cardsOpen[0]);
+          flipcard(cardsOpen[1]);
+          cardsOpen = [];
+        }, 1000);
       }
 }
 
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
-  if ((cardClicked.classList.contains('card')) && (cardsOpen.length < 2))
+  if ((cardClicked.classList.contains('card')) && (!cardClicked.classList.contains('match')) && (cardsOpen.length < 2)
+  && (!cardsOpen.includs(cardClicked)))
   {
       flipcard (cardClicked);
       addcardsOpen (cardClicked);
     }
-    if (cardsOpen.length === 2){
+   if (cardsOpen.length === 2){
       compare();
     }
 });
