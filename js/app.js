@@ -53,9 +53,12 @@ function addcardsOpen(a){
 function compare(){
   if (cardsOpen[0].firstElementChild.className ===
       cardsOpen[1].firstElementChild.className ){
-        console.log ("matched!");
+        cardsOpen[0].classList.toggle('match');
+        cardsOpen[1].classList.toggle('match');
+        cardsOpen = [];
       }else {
         console.log ("fail");
+        cardsOpen = [];
       }
 }
 
