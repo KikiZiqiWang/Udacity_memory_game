@@ -39,16 +39,15 @@ function shuffle(array) {
 
 /*为什么这里不能用 getElementsByClassName('.deck')?*/
 const allCards = document.querySelector('.deck');
-let cardsOpen = [];
+let cardsOpne = [];
 
 function flipcard(a) {
   a.classList.toggle('open');
   a.classList.toggle('show');
 }
 
-function addCardsOpen(a){
+function addcardsOpen(a){
   cardsOpen.push(a);
-  console.log(cardsOpen);
 }
 
 allCards.addEventListener('click', function(event){
@@ -56,6 +55,6 @@ allCards.addEventListener('click', function(event){
   if ((cardClicked.classList.contains('card')))
   {
       flipcard (cardClicked);
-      addCardsOpen (cardClicked);
+      addcardsOpen (cardClicked);
     }
 });
