@@ -40,6 +40,12 @@ function shuffle(array) {
 /*为什么这里不能用 getElementsByClassName('.deck')?*/
 const allCards = document.querySelector('.deck');
 let cardsOpen = [];
+let move = 0;
+
+function trackmove(){
+  move ++;
+  document.querySelector('.moves').innerText = move;
+}
 
 function flipcard(a) {
   a.classList.toggle('open');
@@ -68,12 +74,13 @@ function compare(){
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
   if ((cardClicked.classList.contains('card')) && (!cardClicked.classList.contains('match')) && (cardsOpen.length < 2)
-  && (!cardsOpen.includs(cardClicked)))
+  && (!cardsOpen.includes(cardClicked)))
   {
       flipcard (cardClicked);
       addcardsOpen (cardClicked);
     }
    if (cardsOpen.length === 2){
       compare();
+      trackmove();
     }
 });
