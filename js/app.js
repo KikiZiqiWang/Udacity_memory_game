@@ -42,6 +42,7 @@ const allCards = document.querySelector('.deck');
 const restartButton = document.querySelector('#restartButton');
 let cardsOpen = [];
 let move = 0;
+let starNumber = 3;
 
 function restart(){
   const cardsToShuffle = Array.from(document.querySelectorAll('.card'));
@@ -65,15 +66,18 @@ function star(){
   const star3 = document.querySelector('#star3');
   if (8 <= move && move <= 16){
     star1.className ="far fa-star";
+    starNumber = 2;
   }
   if (17 <= move && move <= 24){
     star1.className ="far fa-star";
     star2.className ="far fa-star";
+    starNumber = 1;
   }
   if (25 <= move && move <= 32){
     star1.className ="far fa-star";
     star2.className ="far fa-star";
     star3.className ="far fa-star";
+    starNumber = 0;
   }
 }
 
@@ -101,6 +105,16 @@ function compare(){
       }
 }
 
+function win(){
+  const carsMatched = document.querySelectorAll('.match')
+  if (carsMatched.length === 16){
+    document.querySelector('.modal_background').classList.toggle('hide');
+    document.querySelector('.container').classList.toggle('hide');
+    document.querySelector('.move_number').innerText = move;
+    document.querySelector('.star_number').innerText = starNumber;
+  }
+}
+
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
   if ((cardClicked.classList.contains('card')) && (!cardClicked.classList.contains('match')) && (cardsOpen.length < 2)
@@ -113,6 +127,7 @@ allCards.addEventListener('click', function(event){
       compare();
       trackmove();
       star();
+      win();
     }
 });
 
