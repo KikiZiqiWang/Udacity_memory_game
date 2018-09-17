@@ -39,8 +39,20 @@ function shuffle(array) {
 
 /*为什么这里不能用 getElementsByClassName('.deck')?*/
 const allCards = document.querySelector('.deck');
+const restartButton = document.querySelector('#restartButton');
 let cardsOpen = [];
 let move = 0;
+
+function restart(){
+  const cardsToShuffle = Array.from(document.querySelectorAll('.card'));
+  const cardsShuffled = shuffle(cardsToShuffle);
+  for (card of cardsShuffled) {
+    allCards.appendChild(card);
+  }
+}
+
+restart();
+
 
 function trackmove(){
   move ++;
@@ -103,3 +115,5 @@ allCards.addEventListener('click', function(event){
       star();
     }
 });
+
+restartButton.addEventListener('click', function(){restart()});
