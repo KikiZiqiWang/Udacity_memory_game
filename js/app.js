@@ -47,6 +47,24 @@ function trackmove(){
   document.querySelector('.moves').innerText = move;
 }
 
+function star(){
+  const star1 = document.querySelector('#star1');
+  const star2 = document.querySelector('#star2');
+  const star3 = document.querySelector('#star3');
+  if (8 <= move && move <= 16){
+    star1.className ="far fa-star";
+  }
+  if (17 <= move && move <= 24){
+    star1.className ="far fa-star";
+    star2.className ="far fa-star";
+  }
+  if (25 <= move && move <= 32){
+    star1.className ="far fa-star";
+    star2.className ="far fa-star";
+    star3.className ="far fa-star";
+  }
+}
+
 function flipcard(a) {
   a.classList.toggle('open');
   a.classList.toggle('show');
@@ -82,5 +100,6 @@ allCards.addEventListener('click', function(event){
    if (cardsOpen.length === 2){
       compare();
       trackmove();
+      star();
     }
 });
