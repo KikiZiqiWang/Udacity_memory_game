@@ -9,6 +9,19 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
+    <div class="modal_background hide">
+        <div class="modal_body">
+          <div class="you_win_icon">
+            <i class="fas fa-check-circle"></i>
+          </div>
+          <span class="you_win">Congratulations! You Won!</span>
+          <div class="info">
+          With <span class="move_number">20</span> moves and
+          <span class="star_number">2</span> stars.
+          Woooooo!
+          </div>
+        </div>
+    </div>
 
     <div class="container">
         <header>
@@ -24,7 +37,7 @@
 
         	<span class="moves">0</span> Moves
 
-            <div class="restart">
+            <div class="restart" id="restartButton">
         		<i class="fas fa-redo-alt"></i>
         	</div>
         </section>
@@ -80,6 +93,7 @@
             </li>
         </ul>
     </div>
+
 
     <script src="js/app.js"></script>
 </body>
