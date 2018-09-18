@@ -18,7 +18,7 @@ body {
 
 body {
     background: #ffffff url('../img/paper_texture_01.png'); /* Background pattern from Subtle Patterns */
-    font-family: 'Coda', cursive;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .container {
@@ -30,8 +30,7 @@ body {
 
 h1 {
     font-family: 'Roboto Mono', monospace;
-    font-size:60px;
-    color: rgba(80,80,80,0.8);
+    font-size:50px;
 }
 
 /*
@@ -41,7 +40,7 @@ h1 {
 .deck {
     width: 660px;
     min-height: 680px;
-    background: linear-gradient(180deg, #6e45e2 0%, #FFA07A 80%);
+    background: rgba(255,255,255,0.5);
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -56,7 +55,7 @@ h1 {
     height: 125px;
     width: 125px;
     font-size: 0;
-    background: rgba(255,255,255,0.5);
+    background:#ffffff url('../img/paper_texture_02.png');
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -67,18 +66,18 @@ h1 {
 
 .deck .card.open {
     transform: rotateY(0);
-    background: #6e45e2;
+    background:#ffffff url('../img/paper_texture_04.png');
     cursor: default;
 }
 
 .deck .card.show {
     font-size: 40px;
-    color: #ffffff;
+    color: rgba(0,0,0,0.5)
 }
 
 .deck .card.match {
     cursor: default;
-    background: #FFA07A;
+    background:#ffffff url('../img/paper_texture_03.png');
     font-size: 40px;
 }
 
@@ -113,36 +112,38 @@ h1 {
     position:absolute;
     height: 100%;
     width: 100%;
-    background-color: #ffffff;
+    background: #ffffff url('../img/paper_texture_01.png');
 }
 .modal_body{
     width: 400px;
-    align-items: center;
-    margin-top: 200px;
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
+     margin: auto;
+     top: 30%;
+     right: 0;
+     bottom: 0;
+     left: 0;
 }
 .you_win_icon{
     width:100px;
     font-size: 100px;
-    color: #88d3ce;
+    color: rgba(255,160,122,0.5);
     margin: auto;
 }
 .you_win{
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 30px;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 20px;
     color:#000000;
-    align-items: center;
+    padding-left: 60px;
+    text-align:center;
 }
 .info{
-    margin: auto;
+    align-items: center;
+    margin:auto;
     padding-top: 20px;
     width:200px;
     font-family: 'Open Sans', sans-serif;
     font-size: 15px;
-    align-items: center;
+    text-align: center;
 }
 .hide{
     display: none;
