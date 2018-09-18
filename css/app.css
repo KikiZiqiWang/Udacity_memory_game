@@ -43,7 +43,10 @@ h1 {
     background: rgba(255,255,255,0.5);
     padding: 32px;
     border-radius: 10px;
-    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(255,160,122,0.8);
+    box-shadow: 12px 15px 20px 0 rgba(255,160,122,0.8);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -57,11 +60,14 @@ h1 {
     font-size: 0;
     background:#ffffff url('../img/paper_texture_02.png');
     border-radius: 8px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: rgba(255,160,122,0.8);
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    box-shadow: 5px 2px 20px 0 rgba(255,160,122,0.8);
 }
 
 .deck .card.open {
@@ -96,6 +102,7 @@ h1 {
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
+    color: rgba(255,160,122,1);
 }
 
 .score-panel .stars li {
@@ -106,6 +113,7 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    color: rgba(255,160,122,1);
 }
 
 .modal_background{
