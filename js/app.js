@@ -64,16 +64,16 @@ function star(){
   const star1 = document.querySelector('#star1');
   const star2 = document.querySelector('#star2');
   const star3 = document.querySelector('#star3');
-  if (8 <= move && move <= 16){
+  if (10 <= move && move <= 22){
     star1.className ="far fa-star";
     starNumber = 2;
   }
-  if (17 <= move && move <= 24){
+  if (23 <= move && move <= 34){
     star1.className ="far fa-star";
     star2.className ="far fa-star";
     starNumber = 1;
   }
-  if (25 <= move && move <= 32){
+  if (34 <= move && move <= 48){
     star1.className ="far fa-star";
     star2.className ="far fa-star";
     star3.className ="far fa-star";
