@@ -64,7 +64,7 @@ function star(){
   const star1 = document.querySelector('#star1');
   const star2 = document.querySelector('#star2');
   const star3 = document.querySelector('#star3');
-  if (10 <= move && move <= 22){
+  if (15 <= move && move <= 22){
     star1.className ="far fa-star";
     starNumber = 2;
   }
@@ -108,10 +108,12 @@ function compare(){
 function win(){
   const carsMatched = document.querySelectorAll('.match')
   if (carsMatched.length === 16){
-    document.querySelector('.modal_background').classList.toggle('hide');
-    document.querySelector('.container').classList.toggle('hide');
-    document.querySelector('.move_number').innerText = move;
-    document.querySelector('.star_number').innerText = starNumber;
+    setTimeout(function(){
+      document.querySelector('.modal_background').classList.toggle('hide');
+      document.querySelector('.container').classList.toggle('hide');
+      document.querySelector('.move_number').innerText = move;
+      document.querySelector('.star_number').innerText = starNumber;
+    }, 1500);
   }
 }
 
