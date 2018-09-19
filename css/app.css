@@ -68,6 +68,7 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(255,160,122,0.8);
+    -webkit-animation-duration: 0.8s;
 }
 
 .deck .card.open {

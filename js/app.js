@@ -86,6 +86,25 @@ function flipcard(a) {
   a.classList.toggle('show');
 }
 
+function match(a) {
+  a.classList.toggle('match');
+}
+
+function animationFlip(a){
+  a.classList.toggle('animated');
+  a.classList.toggle('flipInX');
+}
+
+function animationShake(a){
+  a.classList.toggle('animated');
+  a.classList.toggle('shake');
+}
+
+function animationTada(a){
+  a.classList.toggle('animated');
+  a.classList.toggle('tada');
+}
+
 function addcardsOpen(a){
   cardsOpen.push(a);
 }
@@ -93,14 +112,24 @@ function addcardsOpen(a){
 function compare(){
   if (cardsOpen[0].firstElementChild.className ===
       cardsOpen[1].firstElementChild.className ){
-        cardsOpen[0].classList.toggle('match');
-        cardsOpen[1].classList.toggle('match');
-        cardsOpen = [];
+        match(cardsOpen[0]);
+        match(cardsOpen[1]);
+        setTimeout(function(){
+          animationTada(cardsOpen[0]);
+          animationTada(cardsOpen[1]);
+          cardsOpen = [];
+        },1000);
       }else {
         setTimeout(function(){
-          flipcard(cardsOpen[0]);
-          flipcard(cardsOpen[1]);
-          cardsOpen = [];
+          animationShake(cardsOpen[0]);
+          animationShake(cardsOpen[1]);
+          setTimeout(function(){
+            flipcard(cardsOpen[0]);
+            flipcard(cardsOpen[1]);
+            animationShake(cardsOpen[0]);
+            animationShake(cardsOpen[1]);
+            cardsOpen = [];
+          },500);
         }, 1000);
       }
 }
@@ -123,7 +152,11 @@ allCards.addEventListener('click', function(event){
   && (!cardsOpen.includes(cardClicked)))
   {
       flipcard (cardClicked);
+      animationFlip(cardClicked);
       addcardsOpen (cardClicked);
+      setTimeout(function(){
+        animationFlip(cardClicked);
+      },1000);
     }
    if (cardsOpen.length === 2){
       compare();
