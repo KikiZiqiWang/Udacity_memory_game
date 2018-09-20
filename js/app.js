@@ -44,8 +44,9 @@ let cardsOpen = [];
 let move = 0;
 let starNumber = 3;
 let time = 0;
+let timerRestart = false;
 
-  /*flip all matched cards*/
+  /*the restart function that resets all thing and restart a new game*/
 function restart(){
   const cardsToShuffle = Array.from(document.querySelectorAll('.card'));
   /*flip all cards*/
@@ -63,10 +64,12 @@ function restart(){
   for (let card of cardsShuffled) {
     allCards.appendChild(card);
   }
+  timerRestart= true;/*restart counting time*/
+
 }
 
-restart();
-timer();
+restart();/*auto resets everything in the beginning*/
+timer();/*start clock.*/
 
 /*track and count number of moves.*/
 function trackmove(){
@@ -173,8 +176,11 @@ function win(){
 
 function timer (){
   time = 0;
+
   setInterval(function(){
-    time ++;
+    /*Restart timing if timeRestart is ture*/
+    if(timerRestart === false){time ++;}
+    else if(timerRestart === true){time = 0; timerRestart = false;}
     /*Convert seconds into clock format and show on page*/
     let seconds = "00";
     if((time%60)<10){
