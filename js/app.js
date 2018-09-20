@@ -43,18 +43,26 @@ const restartButton = document.querySelector('#restartButton');
 let cardsOpen = [];
 let move = 0;
 let starNumber = 3;
+let time = 0;
 
 function restart(){
+  /*flip all matched cards
+  for (let card of cardsMatched) {
+    flipcard(card);
+    match(card);
+  }
+  /*shuffle all cards*/
   const cardsToShuffle = Array.from(document.querySelectorAll('.card'));
   const cardsShuffled = shuffle(cardsToShuffle);
-  for (card of cardsShuffled) {
+  for (let card of cardsShuffled) {
     allCards.appendChild(card);
   }
 }
 
 restart();
+timer();
 
-
+/*track and count number of moves.*/
 function trackmove(){
   move ++;
   document.querySelector('.moves').innerText = move;
@@ -135,8 +143,8 @@ function compare(){
 }
 
 function win(){
-  const carsMatched = document.querySelectorAll('.match')
-  if (carsMatched.length === 16){
+  const cardsMatched = document.querySelectorAll('.match')
+  if (cardsMatched.length === 16){
     setTimeout(function(){
       document.querySelector('.modal_background').classList.toggle('hide');
       document.querySelector('.container').classList.toggle('hide');
@@ -145,6 +153,28 @@ function win(){
     }, 1500);
   }
 }
+
+/*timer function*/
+
+function timer (){
+  time = 0;
+  setInterval(function(){
+    time ++;
+    /*Convert seconds into clock format and show on page*/
+    let seconds = "00";
+    if((time%60)<10){
+      seconds = "0"+(time%60);
+    } else {seconds = time%60;}
+
+    let minutes = "00";
+    if(Math.floor(time/60)<10){
+      minutes = "0"+ Math.floor(time/60);
+    } else {minutes = Math.floor(time/60);}
+    document.querySelector('.clock').innerText = minutes + ":" + seconds;
+
+  }
+, 1000);
+  }
 
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
