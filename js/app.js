@@ -37,7 +37,7 @@ function shuffle(array) {
  */
 
 
-/*为什么这里不能用 getElementsByClassName('.deck')?*/
+/*为什么这里不能用 getElementsByClassName('deck')?*/
 const allCards = document.querySelector('.deck');
 const restartButton = document.querySelector('#restartButton');
 let cardsOpen = [];
@@ -45,12 +45,14 @@ let move = 0;
 let starNumber = 3;
 let time = 0;
 
+  /*flip all matched cards*/
 function restart(){
-  /*flip all matched cards
-  for (let card of cardsMatched) {
+  const allCardsMatched = Array.from(document.querySelectorAll('.match'));
+  for (let card of allCardsMatched) {
     flipcard(card);
     match(card);
   }
+
   /*shuffle all cards*/
   const cardsToShuffle = Array.from(document.querySelectorAll('.card'));
   const cardsShuffled = shuffle(cardsToShuffle);
@@ -130,7 +132,11 @@ function compare(){
         setTimeout(function(){
           animationTada(cardsOpen[0]);
           animationTada(cardsOpen[1]);
-          cardsOpen = [];
+          setTimeout(function(){
+            animationTada(cardsOpen[0]);
+            animationTada(cardsOpen[1]);
+            cardsOpen = [];
+          },500);
         },1000);
       }else {
         setTimeout(function(){
