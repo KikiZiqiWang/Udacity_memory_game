@@ -45,6 +45,7 @@ let move = 0;
 let starNumber = 3;
 let time = 0;
 let timerRestart = false;
+let trackMoveRestart = false;
 
   /*the restart function that resets all thing and restart a new game*/
 function restart(){
@@ -64,16 +65,21 @@ function restart(){
   for (let card of cardsShuffled) {
     allCards.appendChild(card);
   }
-  timerRestart= true;/*restart counting time*/
-
+  timerRestart= true;/*rest time*/
+  trackMoveRestart = true;/*reset moves*/
+  trackMove();
 }
 
 restart();/*auto resets everything in the beginning*/
 timer();/*start clock.*/
 
 /*track and count number of moves.*/
-function trackmove(){
-  move ++;
+function trackMove(){
+  /*Reset trackMove*/
+  if (trackMoveRestart === false ){
+      move ++;
+  } else if(trackMoveRestart === true){ move = 0; trackMoveRestart = false;}
+  /*display move*/
   if (move < 2){
     document.querySelector('.moves').innerText = move + " Move";
   }
@@ -211,7 +217,7 @@ allCards.addEventListener('click', function(event){
     }
    if (cardsOpen.length === 2){
       compare();
-      trackmove();
+      trackMove();
       star();
       win();
     }
