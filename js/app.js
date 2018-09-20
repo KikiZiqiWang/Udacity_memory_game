@@ -65,7 +65,12 @@ timer();
 /*track and count number of moves.*/
 function trackmove(){
   move ++;
-  document.querySelector('.moves').innerText = move;
+  if (move < 2){
+    document.querySelector('.moves').innerText = move + " Move";
+  }
+  if (move >= 2){
+    document.querySelector('.moves').innerText = move + " Moves";
+  }
 }
 
 function star(){
