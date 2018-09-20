@@ -68,6 +68,7 @@ function restart(){
   timerRestart= true;/*rest time*/
   trackMoveRestart = true;/*reset moves*/
   trackMove();
+  star();
 }
 
 restart();/*auto resets everything in the beginning*/
@@ -92,6 +93,11 @@ function star(){
   const star1 = document.querySelector('#star1');
   const star2 = document.querySelector('#star2');
   const star3 = document.querySelector('#star3');
+  if (move <15){
+    star1.className = "fas fa-star";
+    star2.className = "fas fa-star";
+    star3.className = "fas fa-star";
+  }
   if (15 <= move && move <= 22){
     star1.className ="far fa-star";
     starNumber = 2;
