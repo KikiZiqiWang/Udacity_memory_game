@@ -47,14 +47,18 @@ let time = 0;
 
   /*flip all matched cards*/
 function restart(){
-  const allCardsMatched = Array.from(document.querySelectorAll('.match'));
-  for (let card of allCardsMatched) {
-    flipcard(card);
-    match(card);
-  }
-
-  /*shuffle all cards*/
   const cardsToShuffle = Array.from(document.querySelectorAll('.card'));
+  /*flip all cards*/
+  for (let card of cardsToShuffle) {
+    card.className = "card";
+    animationFlip(card);
+    setTimeout(function(){
+      animationFlip(card);
+    },1000)
+  }
+  /*Reset cardsOpen array*/
+  cardsOpen = [];
+  /*shuffle all cards*/
   const cardsShuffled = shuffle(cardsToShuffle);
   for (let card of cardsShuffled) {
     allCards.appendChild(card);
