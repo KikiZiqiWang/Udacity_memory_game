@@ -32,7 +32,7 @@ h1 {
     font-family: 'Roboto Mono', monospace;
     font-size:50px;
     font-weight: 300;
-    color: rgba(255,160,122,1);
+    color: rgba(0,0,0,0.8);
 }
 
 /*
@@ -47,8 +47,7 @@ h1 {
     border-radius: 10px;
     border-style: solid;
     border-width: 2px;
-    border-color: rgba(255,160,122,0.8);
-    box-shadow: 12px 15px 20px 0 rgba(255,160,122,0.8);
+    border-color: rgba(0,0,0,0.8);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -69,7 +68,6 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 5px 2px 20px 0 rgba(255,160,122,0.8);
     -webkit-animation-duration: 0.8s;
 }
 
