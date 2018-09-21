@@ -146,17 +146,18 @@ function addcardsOpen(a){
 function compare(){
   if (cardsOpen[0].firstElementChild.className ===
       cardsOpen[1].firstElementChild.className ){
-        match(cardsOpen[0]);
-        match(cardsOpen[1]);
         setTimeout(function(){
           animationTada(cardsOpen[0]);
           animationTada(cardsOpen[1]);
+          match(cardsOpen[0]);
+          match(cardsOpen[1]);
+          win();/*count numbr of matched cards, decide if user wins.*/
           setTimeout(function(){
             animationTada(cardsOpen[0]);
             animationTada(cardsOpen[1]);
             cardsOpen = [];
           },500);
-        },1000);
+        },1000);/*timeout -- class is not added on immdately after card is flipped and matched. Need to call the win function inside compare function instead of outside.*/
       }else {
         setTimeout(function(){
           animationShake(cardsOpen[0]);
@@ -172,15 +173,18 @@ function compare(){
       }
 }
 
+/*show you win window when all cards are matched.*/
+
 function win(){
-  const cardsMatched = document.querySelectorAll('.match')
-  if (cardsMatched.length === 16){
-    setTimeout(function(){
+  if(allCards.querySelectorAll('.match').length === 16){
+  setTimeout(function(){
       document.querySelector('.modal_background').classList.toggle('hide');
       document.querySelector('.container').classList.toggle('hide');
       document.querySelector('.move_number').innerText = move;
       document.querySelector('.star_number').innerText = starNumber;
-    }, 1500);
+      document.querySelector('.finaltime').innerText =
+      document.querySelector('.clock').innerText
+        }, 500);
   }
 }
 
@@ -225,7 +229,6 @@ allCards.addEventListener('click', function(event){
       compare();
       trackMove();
       star();
-      win();
     }
 });
 
