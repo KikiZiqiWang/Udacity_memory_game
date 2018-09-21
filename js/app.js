@@ -225,7 +225,8 @@ allCards.addEventListener('click', function(event){
         animationFlip(cardClicked);
       },1000);
     }
-   if (cardsOpen.length === 2){
+    /* 当cardsOpen等于2，开始比较的时候，如果这时点击另外一张卡，虽然cardsOpen数组内容不变，另外一张卡牌不会翻开，却会触发新一轮的比较和计时。这里需要加入一个新的条件,改变setTimeOut位置？*/
+   if ((cardsOpen.length === 2) && (cardsOpen.includes(cardClicked))){
       compare();
       trackMove();
       star();

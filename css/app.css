@@ -64,6 +64,7 @@ h1 {
     border-style: solid;
     border-width: 2px;
     border-color: rgba(255,160,122,0.8);
+    box-shadow: 5px 2px 20px 0 rgba(0,0,0,0.2);
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -94,11 +95,12 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 390px;
     margin-bottom: 10px;
 }
 
 .score-panel .stars {
+    float: left;
     margin: 0;
     padding: 0;
     display: inline-block;
@@ -109,6 +111,14 @@ h1 {
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
+}
+
+.score-panel .moves {
+   margin-left: 50px;
+}
+
+.score-panel .clock {
+    margin-left:50px;
 }
 
 .score-panel .restart {
@@ -135,8 +145,8 @@ h1 {
     border-radius: 10px;
 }
 .you_win_icon{
-    width:90px;
-    font-size: 90px;
+    width:50px;
+    font-size: 50px;
     color: rgba(255,160,122,1);
     margin: auto;
 }
