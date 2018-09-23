@@ -30,18 +30,84 @@ body {
 
 h1 {
     font-family: 'Roboto Mono', monospace;
-    font-size:50px;
-    font-weight: 300;
     color: rgba(0,0,0,0.8);
 }
 
 /*
  * Styles for the deck of cards
  */
+@media screen and (min-width: 800px){
+  .deck {
+      width: 600px;
+      min-height: 600px;
+    }
+  .deck .card {
+        height: 125px;
+        width: 125px;
+    }
+  .score-panel{
+    width: 400px;
+  }
+  .deck .card.show {
+        font-size: 40px;
+        color: rgba(0,0,0,0.5)
+    }
+  h1{
+    font-size:50px;
+    font-weight: 300;
+  }
+}
+
+@media screen and (min-width: 411px) and (max-width:799px){
+  .deck {
+      width: 400px;
+      height:400px;
+   }
+
+  .deck .card {
+        height: 80px;
+        width: 80px;
+    }
+  .score-panel{
+      width: 400px;
+    }
+  .deck .card.show {
+          font-size: 40px;
+          color: rgba(0,0,0,0.5)
+      }
+  h1{
+        font-size:50px;
+        font-weight: 300;
+      }
+}
+
+@media screen and (max-width:410px){
+  .deck {
+      width: 350px;
+      height:350px;
+   }
+
+  .deck .card {
+        height: 70px;
+        width: 70px;
+    }
+  .score-panel{
+      width: 350px;
+    }
+
+  .deck .card.show {
+        font-size: 25px;
+        color: rgba(0,0,0,0.5)
+    }
+  h1{
+        font-size:40px;
+        font-weight: 300;
+    }
+
+}
+
 
 .deck {
-    width: 660px;
-    min-height: 680px;
     background: rgba(255,255,255,0.5);
     padding: 32px;
     border-radius: 10px;
@@ -56,8 +122,6 @@ h1 {
 }
 
 .deck .card {
-    height: 125px;
-    width: 125px;
     font-size: 0;
     background:#ffffff url('../img/ep_naturalwhite.png');
     border-radius: 8px;
@@ -78,11 +142,6 @@ h1 {
     cursor: default;
 }
 
-.deck .card.show {
-    font-size: 40px;
-    color: rgba(0,0,0,0.5)
-}
-
 .deck .card.match {
     cursor: default;
     background:#ffffff url('../img/paper_texture_03.png');
@@ -95,7 +154,6 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 390px;
     margin-bottom: 10px;
 }
 
