@@ -215,9 +215,13 @@ function timer (){
 
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
-  if ((cardClicked.classList.contains('card')) && (!cardClicked.classList.contains('match')) && (cardsOpen.length < 2)
-  && (!cardsOpen.includes(cardClicked)))
+  if (cardClicked.classList.contains('card') && !cardClicked.classList.contains('match') && cardsOpen.length < 2
+  && !cardsOpen.includes(cardClicked))
   {
+      /*增加一个判断，如果被点击的卡片已经翻开，则直接返回，不再进行之后的操作*/
+      if (cardClicked.classList.contains('open')){
+        return;
+      }
       flipcard (cardClicked);
       animationFlip(cardClicked);
       addcardsOpen (cardClicked);
@@ -225,7 +229,7 @@ allCards.addEventListener('click', function(event){
         animationFlip(cardClicked);
       },1000);
     }
-    /* 当cardsOpen等于2，开始比较的时候，如果这时点击另外一张卡，虽然cardsOpen数组内容不变，另外一张卡牌不会翻开，却会触发新一轮的比较和计时。这里需要加入一个新的条件,改变setTimeOut位置？*/
+    /*这时快速点击已翻开卡片之外的另一张卡片，则卡片不会被翻开*/
    if ((cardsOpen.length === 2) && (cardsOpen.includes(cardClicked))){
       compare();
       trackMove();
