@@ -33,9 +33,6 @@ h1 {
     color: rgba(0,0,0,0.8);
 }
 
-/*
- * Styles for the deck of cards
- */
 @media screen and (min-width: 800px){
   .deck {
       width: 600px;
@@ -72,7 +69,7 @@ h1 {
       width: 400px;
     }
   .deck .card.show {
-          font-size: 40px;
+          font-size: 30px;
           color: rgba(0,0,0,0.5)
       }
   h1{
@@ -133,7 +130,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    -webkit-animation-duration: 0.8s;
+    -webkit-animation-duration: 0.7s;
 }
 
 .deck .card.open {
@@ -192,15 +189,11 @@ h1 {
     background: #ffffff url('../img/ep_naturalwhite.png');
 }
 .modal_body{
-    position: absolute;
+    position: sticky;
     width: 400px;
-    height:300px;
-    margin: auto;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border-radius: 10px;
+    height:400px;
+    margin:auto;
+    top: 25%;
 }
 .you_win_icon{
     width:50px;
