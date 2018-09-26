@@ -43,20 +43,18 @@ const restartButton = document.querySelector('#restartButton');
 let cardsOpen = [];
 let move = 0;
 let starNumber = 3;
-let time = 0;
-let timerRestart = false;
-let trackMoveRestart = false;
+let trackMoveStart = false;
+let timerStart = false;
 
   /*the restart function that resets all thing and restart a new game*/
 function restart(){
   const cardsToShuffle = Array.from(document.querySelectorAll('.card'));
   /*flip all cards*/
   for (let card of cardsToShuffle) {
-    card.className = "card";
-    animationFlip(card);
+    card.className = "card flipInX"
     setTimeout(function(){
-      animationFlip(card);
-    },1000)
+      card.classList.remove('flipInX')
+    },500);
   }
   /*Reset cardsOpen array*/
   cardsOpen = [];
@@ -65,21 +63,27 @@ function restart(){
   for (let card of cardsShuffled) {
     allCards.appendChild(card);
   }
-  timerRestart= true;/*rest time*/
-  trackMoveRestart = true;/*reset moves*/
+
+  timerStart = false;
+  trackMoveStart = false;
   trackMove();
+
   star();
 }
 
 restart();/*auto resets everything in the beginning*/
-timer();/*start clock.*/
+timer();//start timer
 
 /*track and count number of moves.*/
 function trackMove(){
   /*Reset trackMove*/
-  if (trackMoveRestart === false ){
-      move ++;
-  } else if(trackMoveRestart === true){ move = 0; trackMoveRestart = false;}
+  if (trackMoveStart === true){
+    move ++;
+  }
+  if (trackMoveStart === false){
+    move = 0;
+    trackMoveStart = true;
+  }
   /*display move*/
   if (move < 2){
     document.querySelector('.moves').innerText = move + " Move";
@@ -88,6 +92,29 @@ function trackMove(){
     document.querySelector('.moves').innerText = move + " Moves";
   }
 }
+
+function timer (){
+  time = 0;
+
+  setInterval(function(){
+    /*Start timing if timerStart is ture*/
+    if(timerStart === true && move>=1){time++;}
+    else if (timerStart === false) {time = 0; timerStart = true;}
+    /*Convert seconds into clock format and show on page*/
+    let seconds = "00";
+    if((time%60)<10){
+      seconds = "0"+(time%60);
+    } else {seconds = time%60;}
+
+    let minutes = "00";
+    if(Math.floor(time/60)<10){
+      minutes = "0"+ Math.floor(time/60);
+    } else {minutes = Math.floor(time/60);}
+    document.querySelector('.clock').innerText = minutes + ":" + seconds;
+
+  }
+, 1000);
+  }
 
 function star(){
   const star1 = document.querySelector('#star1');
@@ -130,8 +157,8 @@ function compare(){
             cardsOpen[0].className = 'card open show match'
             cardsOpen[1].className = 'card open show match'
             cardsOpen = [];
+            win();
           },300);
-          win();
           /*timeout -- class is not added on immdately after card is flipped and matched. Need to call the win function inside compare function instead of outside.*/
       }else {
         //去掉最外层的计时器
@@ -163,30 +190,7 @@ function win(){
   }
 }
 
-/*timer function*/
-
-function timer (){
-  time = 0;
-
-  setInterval(function(){
-    /*Restart timing if timeRestart is ture*/
-    if(timerRestart === false){time ++;}
-    else if(timerRestart === true){time = 0; timerRestart = false;}
-    /*Convert seconds into clock format and show on page*/
-    let seconds = "00";
-    if((time%60)<10){
-      seconds = "0"+(time%60);
-    } else {seconds = time%60;}
-
-    let minutes = "00";
-    if(Math.floor(time/60)<10){
-      minutes = "0"+ Math.floor(time/60);
-    } else {minutes = Math.floor(time/60);}
-    document.querySelector('.clock').innerText = minutes + ":" + seconds;
-
-  }
-, 1000);
-  }
+// 在翻开第一张牌时开始计时
 
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
@@ -197,14 +201,14 @@ allCards.addEventListener('click', function(event){
       if (cardClicked.classList.contains('open')){
         return;
       }
+      trackMove();
       /*此处减少toggle的使用，直接添加需要的class*/
       addcardsOpen (cardClicked);
-      cardClcked.classList.add('open','show','animated','faster','flipInX');
+      cardClicked.classList.add('open','show','animated','faster','flipInX');
     }
 
-   if ((cardsOpen.length === 2) {
+   if (cardsOpen.length === 2) {
       compare();
-      trackMove();
       star();
     }
 });
