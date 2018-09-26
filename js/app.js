@@ -71,9 +71,6 @@ function restart(){
   star();
 }
 
-restart();/*auto resets everything in the beginning*/
-timer();//start timer
-
 /*track and count number of moves.*/
 function trackMove(){
   /*Reset trackMove*/
@@ -111,30 +108,28 @@ function timer (){
       minutes = "0"+ Math.floor(time/60);
     } else {minutes = Math.floor(time/60);}
     document.querySelector('.clock').innerText = minutes + ":" + seconds;
-
-  }
-, 1000);
+},1000);
   }
 
 function star(){
   const star1 = document.querySelector('#star1');
   const star2 = document.querySelector('#star2');
   const star3 = document.querySelector('#star3');
-  if (move <15){
+  if (move <30){
     star1.className = "fas fa-star";
     star2.className = "fas fa-star";
     star3.className = "fas fa-star";
   }
-  if (15 <= move && move <= 22){
+  if (30 <= move && move <50){
     star1.className ="far fa-star";
     starNumber = 2;
   }
-  if (23 <= move && move <= 34){
+  if (50 <= move && move < 70){
     star1.className ="far fa-star";
     star2.className ="far fa-star";
     starNumber = 1;
   }
-  if (34 <= move && move <= 48){
+  if (70 <= move && move <= 80){
     star1.className ="far fa-star";
     star2.className ="far fa-star";
     star3.className ="far fa-star";
@@ -190,7 +185,8 @@ function win(){
   }
 }
 
-// 在翻开第一张牌时开始计时
+restart();/*auto resets everything in the beginning*/
+timer();//start timer
 
 allCards.addEventListener('click', function(event){
   const cardClicked = event.target;
