@@ -115,30 +115,6 @@ function star(){
   }
 }
 
-function flipcard(a) {
-  a.classList.toggle('open');
-  a.classList.toggle('show');
-}
-
-function match(a) {
-  a.classList.toggle('match');
-}
-
-function animationFlip(a){
-  a.classList.toggle('animated');
-  a.classList.toggle('flipInX');
-}
-
-function animationShake(a){
-  a.classList.toggle('animated');
-  a.classList.toggle('shake');
-}
-
-function animationTada(a){
-  a.classList.toggle('animated');
-  a.classList.toggle('tada');
-}
-
 function addcardsOpen(a){
   cardsOpen.push(a);
 }
@@ -146,30 +122,29 @@ function addcardsOpen(a){
 function compare(){
   if (cardsOpen[0].firstElementChild.className ===
       cardsOpen[1].firstElementChild.className ){
+        cardsOpen[0].classList.remove('flipInX')
+        cardsOpen[1].classList.remove('flipInX')
+        cardsOpen[0].classList.add('tada')
+        cardsOpen[1].classList.add('tada')
         setTimeout(function(){
-          animationTada(cardsOpen[0]);
-          animationTada(cardsOpen[1]);
-          match(cardsOpen[0]);
-          match(cardsOpen[1]);
-          win();/*count numbr of matched cards, decide if user wins.*/
-          setTimeout(function(){
-            animationTada(cardsOpen[0]);
-            animationTada(cardsOpen[1]);
+            cardsOpen[0].className = 'card open show match'
+            cardsOpen[1].className = 'card open show match'
             cardsOpen = [];
-          },500);
-        },1000);/*timeout -- class is not added on immdately after card is flipped and matched. Need to call the win function inside compare function instead of outside.*/
+          },300);
+          win();
+          /*timeout -- class is not added on immdately after card is flipped and matched. Need to call the win function inside compare function instead of outside.*/
       }else {
+        //去掉最外层的计时器
+        cardsOpen[0].classList.remove('flipInX')
+        cardsOpen[1].classList.remove('flipInX')
+        cardsOpen[0].classList.add('shake')
+        cardsOpen[1].classList.add('shake')
         setTimeout(function(){
-          animationShake(cardsOpen[0]);
-          animationShake(cardsOpen[1]);
-          setTimeout(function(){
-            flipcard(cardsOpen[0]);
-            flipcard(cardsOpen[1]);
-            animationShake(cardsOpen[0]);
-            animationShake(cardsOpen[1]);
-            cardsOpen = [];
-          },500);
-        }, 1000);
+          //直接重置两张卡片的类名称
+          cardsOpen[0].className = 'card'
+          cardsOpen[1].className = 'card'
+          cardsOpen = [];
+        },300);//减少重置cardOpen数组的时间间隔
       }
 }
 
@@ -222,15 +197,12 @@ allCards.addEventListener('click', function(event){
       if (cardClicked.classList.contains('open')){
         return;
       }
-      flipcard (cardClicked);
-      animationFlip(cardClicked);
+      /*此处减少toggle的使用，直接添加需要的class*/
       addcardsOpen (cardClicked);
-      setTimeout(function(){
-        animationFlip(cardClicked);
-      },1000);
+      cardClcked.classList.add('open','show','animated','faster','flipInX');
     }
-    /*这时快速点击已翻开卡片之外的另一张卡片，则卡片不会被翻开*/
-   if ((cardsOpen.length === 2) && (cardsOpen.includes(cardClicked))){
+
+   if ((cardsOpen.length === 2) {
       compare();
       trackMove();
       star();
